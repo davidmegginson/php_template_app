@@ -3,7 +3,8 @@
 class HelloController extends AbstractController {
 
   function doGET(HttpRequest $request, HttpResponse $response) {
-    print("Hello, template!");
+    $response->setParameter('message', 'Hello, template!');
+    $response->setTemplate('hello');
   }
 
 }

@@ -6,7 +6,7 @@ $request = new HttpRequest();
 $response = new HttpResponse();
 
 try {
-  $path = $GET['p'];
+  $path = $request->get('p');
   $controller_name = @$APP->paths[$path];
   if (!$controller_name) {
     throw new Exception("Not found");
@@ -59,17 +59,17 @@ try {
   // assign template parameters
   if ($response->parameters) {
     foreach ($response->parameters as $name => $value) {
-      assign_smarty($name, $value);
+      $APP->smarty->assign($name, $value);
     }
   }
 
   // render the response
   if ($response->template) {
-    show_smarty($response->template . '.tpl');
+    $APP->smarty->display($response->template . '.tpl');
   }
 
 } catch (Exception $e) {
-  print($e.getMessage());
+  print($e->getMessage());
 }
 
 exit;

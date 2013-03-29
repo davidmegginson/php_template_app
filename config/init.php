@@ -1,16 +1,16 @@
 <?php
+require_once(__DIR__ . '/../lib/smarty/Smarty.class.php');
 
+//
+// Global application state
+//
 global $APP;
+$APP = new StdClass();
 
 $APP->root = __DIR__ . '/..';
 
 set_include_path(get_include_path() . PATH_SEPARATOR .
         $APP->root . "/lib");
-
-//
-// Global application state
-//
-$APP = new StdClass();
 
 //
 // Load web controller path mappings.
@@ -20,7 +20,6 @@ require_once(__DIR__ . '/paths.php');
 //
 // Fire up the Smarty template engine.
 //
-require_once(__DIR__ . '/../lib/smarty/Smarty.class.php');
 // load and configure Smarty
 $APP->smarty = new Smarty();
 $APP->smarty->error_reporting = 0;
