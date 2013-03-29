@@ -10,7 +10,8 @@ $APP = new StdClass();
 $APP->root = __DIR__ . '/..';
 
 set_include_path(get_include_path() . PATH_SEPARATOR .
-        $APP->root . "/lib");
+                 $APP->root . "/lib/controllers" . PATH_SEPARATOR .
+                 $APP->root . "/lib");
 
 //
 // Load web controller path mappings.
